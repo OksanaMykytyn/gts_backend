@@ -1,0 +1,55 @@
+openapi: 3.0.0
+info:
+  title: Posts API
+  version: 1.0.0
+  description: API для отримання постів з користувачами та тайтлами
+
+servers:
+  - url: http://localhost:3000
+    description: Local server
+
+paths:
+  /posts:
+    get:
+      summary: Отримати всі пости
+      description: Повертає список постів у форматі, необхідному для фронтенду
+      tags:
+        - Posts
+      responses:
+        "200":
+          description: Список постів
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    hasTitle:
+                      type: boolean
+                    titleImage:
+                      type: string
+                      nullable: true
+                    title:
+                      type: string
+                      nullable: true
+                    tags:
+                      type: string
+                      nullable: true
+                    post:
+                      type: object
+                      properties:
+                        user:
+                          type: string
+                        userImg:
+                          type: string
+                        title:
+                          type: string
+                        content:
+                          type: string
+                        likes:
+                          type: integer
+                        comments:
+                          type: integer
